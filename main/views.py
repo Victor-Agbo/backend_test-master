@@ -21,7 +21,7 @@ def add_employee(request, company_id):
             employee = models.Employee.objects.get(id = form.cleaned_data["employees"])
             employee.company = company
             employee.save()
-            return HttpResponseRedirect(reverse("api:companies"))
+            return HttpResponseRedirect("/")
     else:
         form = forms.AddEmployee()
     return render(request, "add_employee.html", {"form": form, "company":company})
