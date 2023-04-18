@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<!-- <div class="container justify-content-center mt-4"> -->
+
+<table>
+    <tr>
+        <th style="width: 20%;">Company</th>
+        <th>Employees</th>
+    </tr>
+    {% for company in companies %}
+    <tr>
+        <td>{{ company.name }} <a href="{% url 'api:add_employee' company.id %}">(Add Employee)</a></td>
+        <td>{% for employee in employees %}
+            {% if employee.company.name == company.name %}
+            {{ employee.first_name }} {{ employee.last_name}},
+            {% endif %}
+            {% endfor %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock body %}
